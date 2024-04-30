@@ -4,12 +4,22 @@ namespace CalculatorTests
 {
     public class UnitTest1
     {
+
+        public Calculator buildClass()
+        {
+            string data = "02/02/2020";
+
+            Calculator calc = new Calculator("02/02/2020");
+
+            return calc;
+        }
+
         [Theory]
         [InlineData(1, 2, 3)]
         [InlineData(4, 5, 9)]
         public void AddTest(int val1, int val2, int result)
         {
-            Calculator calc = new Calculator();
+            Calculator calc = buildClass();
 
             int resultCalculator = calc.add(val1, val2);
 
@@ -21,7 +31,7 @@ namespace CalculatorTests
         [InlineData(4, 5, 20)]
         public void MultiplicationTest(int val1, int val2, int result)
         {
-            Calculator calc = new Calculator();
+            Calculator calc = buildClass();
 
             int resultCalculator = calc.multiply(val1, val2);
 
@@ -33,7 +43,7 @@ namespace CalculatorTests
         [InlineData(5, 5, 1)]
         public void DivisonTest(int val1, int val2, int result)
         {
-            Calculator calc = new Calculator();
+            Calculator calc = buildClass();
 
             int resultCalculator = calc.divide(val1, val2);
 
@@ -45,7 +55,7 @@ namespace CalculatorTests
         [InlineData(5, 5, 0)]
         public void SubtractionTest(int val1, int val2, int result)
         {
-            Calculator calc = new Calculator();
+            Calculator calc = buildClass();
 
             int resultCalculator = calc.subtract(val1, val2);
 
@@ -55,7 +65,7 @@ namespace CalculatorTests
         [Fact]
         public void TestDivisionByZero()
         {
-            Calculator calc = new Calculator();
+            Calculator calc = buildClass();
 
             Assert.Throws<DivideByZeroException>(() => calc.divide(3, 0));
         }
@@ -63,7 +73,7 @@ namespace CalculatorTests
         [Fact]
         public void TestHistoric()
         {
-            Calculator calc = new Calculator();
+            Calculator calc = buildClass();
 
             calc.add(1, 2);
             calc.add(2, 8);
