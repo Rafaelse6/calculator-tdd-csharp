@@ -59,5 +59,21 @@ namespace CalculatorTests
 
             Assert.Throws<DivideByZeroException>(() => calc.divide(3, 0));
         }
+
+        [Fact]
+        public void TestHistoric()
+        {
+            Calculator calc = new Calculator();
+
+            calc.add(1, 2);
+            calc.add(2, 8);
+            calc.add(3, 7);
+            calc.add(4, 1);
+
+            var resultList = calc.historic();
+
+            Assert.NotEmpty(resultList);
+            Assert.Equal(3, resultList.Count);
+        }
     }
 }
